@@ -138,6 +138,7 @@ module Spree
           { customer_profile_id: response.params['customer_profile_id'],
             customer_payment_profile_id: response.params['customer_payment_profile_id_list'].values.first }
         else
+          payment.invalidate!
           payment.send(:gateway_error, response)
         end
       end
